@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+    synapse:
+        image: matrixdotorg/synapse
+        restart: unless-stopped
+        env_file:
+            - synapse.env
+        environment:
+            - SYNAPSE_REPORT_STATS=no
+            - SYNAPSE_ENABLE_REGISTRATION=no
+            - SYNAPSE_LOG_LEVEL=WARN
+            #- SYNAPSE_LOG_LEVEL=DEBUG
+            - SYNAPSE_NO_TLS=yes
+        volumes:
+            - ./synapse/data:/data
+            - ./registrations/facebook-registration.yaml:/data/appservices/facebook-registration.yaml
+        ports:
+            - 8008:8008/tcp
+    matrix-puppet-facebook:
+        image: matrix-puppet-facebook
+        restart: unless-stopped
+        environment:
+            - DEBUG=*matrix-puppet*
+        volumes:
+            - ./matrix-puppet-facebook/config.json:/opt/matrix-puppet-facebook/config.json
+            - ./matrix-puppet-facebook/appstate.json:/opt/matrix-puppet-facebook/appstate.json
+            - ./registrations/facebook-registration.yaml:/opt/matrix-puppet-facebook/facebook-registration.yaml
