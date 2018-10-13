@@ -9,12 +9,14 @@ services:
         environment:
             - SYNAPSE_REPORT_STATS=no
             - SYNAPSE_ENABLE_REGISTRATION=no
+            - SYNAPSE_ALLOW_GUEST=no
             - SYNAPSE_LOG_LEVEL=WARN
             #- SYNAPSE_LOG_LEVEL=DEBUG
             - SYNAPSE_NO_TLS=yes
         volumes:
             - ./synapse/data:/data
             - ./registrations/facebook-registration.yaml:/data/appservices/facebook-registration.yaml
+            - ./registrations/telegram-registration.yaml:/data/appservices/telegram-registration.yaml
         ports:
             - 8008:8008/tcp
     matrix-puppet-facebook:
@@ -26,3 +28,9 @@ services:
             - ./matrix-puppet-facebook/config.json:/opt/matrix-puppet-facebook/config.json
             - ./matrix-puppet-facebook/appstate.json:/opt/matrix-puppet-facebook/appstate.json
             - ./registrations/facebook-registration.yaml:/opt/matrix-puppet-facebook/facebook-registration.yaml
+    mautrix-telegram:
+        image: tulir/mautrix-telegram
+        restart: unless-stopped
+        volumes:
+            - ./mautrix-telegram:/data
+            - ./registrations/telegram-registration.yaml:/data/registration.yaml
