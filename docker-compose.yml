@@ -16,6 +16,7 @@ services:
         volumes:
             - ./synapse/data:/data
             - ./registrations/facebook-registration.yaml:/data/appservices/facebook-registration.yaml
+            - ./registrations/slack-registration.yaml:/data/appservices/slack-registration.yaml
             - ./registrations/telegram-registration.yaml:/data/appservices/telegram-registration.yaml
         ports:
             - 8008:8008/tcp
@@ -28,6 +29,14 @@ services:
             - ./matrix-puppet-facebook/config.json:/opt/matrix-puppet-facebook/config.json
             - ./matrix-puppet-facebook/appstate.json:/opt/matrix-puppet-facebook/appstate.json
             - ./registrations/facebook-registration.yaml:/opt/matrix-puppet-facebook/facebook-registration.yaml
+    matrix-puppet-slack:
+        image: matrix-puppet-slack
+        restart: unless-stopped
+        environment:
+            - DEBUG=*matrix-puppet*
+        volumes:
+            - ./matrix-puppet-slack/config.json:/opt/matrix-puppet-slack/config.json
+            - ./registrations/slack-registration.yaml:/opt/matrix-puppet-slack/slack-registration.yaml
     mautrix-telegram:
         image: tulir/mautrix-telegram
         restart: unless-stopped
