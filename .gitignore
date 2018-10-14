@@ -1,0 +1,7 @@
+synapse.env
+synapse/data
+matrix-puppet-facebook/*.json
+matrix-puppet-slack/*.json
+mautrix-telegram/*.yaml
+mautrix-telegram/*.db
+registrations/*.yaml
