@@ -1,6 +1,8 @@
 synapse.env
 synapse/data
 matrix-puppet-facebook/*.json
+matrix-puppet-hangouts/*.json
+matrix-puppet-hangouts/hangups/*
 matrix-puppet-slack/*.json
 mautrix-telegram/*.yaml
 mautrix-telegram/*.db

@@ -16,6 +16,7 @@ services:
         volumes:
             - ./synapse/data:/data
             - ./registrations/facebook-registration.yaml:/data/appservices/facebook-registration.yaml
+            - ./registrations/hangouts-registration.yaml:/data/appservices/hangouts-registration.yaml
             - ./registrations/slack-registration.yaml:/data/appservices/slack-registration.yaml
             - ./registrations/telegram-registration.yaml:/data/appservices/telegram-registration.yaml
         ports:
@@ -29,6 +30,15 @@ services:
             - ./matrix-puppet-facebook/config.json:/opt/matrix-puppet-facebook/config.json
             - ./matrix-puppet-facebook/appstate.json:/opt/matrix-puppet-facebook/appstate.json
             - ./registrations/facebook-registration.yaml:/opt/matrix-puppet-facebook/facebook-registration.yaml
+    matrix-puppet-hangouts:
+        image: matrix-puppet-hangouts
+        restart: unless-stopped
+        environment:
+            - DEBUG=*matrix-puppet*
+        volumes:
+            - ./matrix-puppet-hangouts/hangups:/root/.cache/hangups
+            - ./matrix-puppet-hangouts/config.json:/opt/matrix-puppet-hangouts/config.json
+            - ./registrations/hangouts-registration.yaml:/opt/matrix-puppet-hangouts/hangouts-registration.yaml
     matrix-puppet-slack:
         image: matrix-puppet-slack
         restart: unless-stopped
