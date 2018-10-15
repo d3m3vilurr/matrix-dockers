@@ -1,5 +1,5 @@
 ## facebook
-TDB
+TBD
 
 ## hangouts
 ```
@@ -13,7 +13,7 @@ $ docker-compose run --entrypoint python3 --rm matrix-puppet-hangouts hangups_ma
 $ docker-compose run --rm matrix-puppet-hangouts -r -u "http://matrix-puppet-hangouts:8090"
 $ docker-compose up -d matrix-puppet-hangouts
 ```
-you should follow the [menual login method][manual-google-login]
+you should follow the [manual login method][manual-google-login]
 
 [manual-google-login]: https://github.com/tdryer/hangups/issues/350#issuecomment-323553771
 
