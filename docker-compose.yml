@@ -14,6 +14,7 @@ services:
             #- SYNAPSE_LOG_LEVEL=DEBUG
             - SYNAPSE_NO_TLS=yes
         volumes:
+            - ./synapse/homeserver.yaml:/conf/homeserver.yaml
             - ./synapse/data:/data
             - ./registrations/facebook-registration.yaml:/data/appservices/facebook-registration.yaml
             - ./registrations/hangouts-registration.yaml:/data/appservices/hangouts-registration.yaml
@@ -45,6 +46,7 @@ services:
         environment:
             - DEBUG=*matrix-puppet*
         volumes:
+            #- /home/d3m3vilurr/works/bridges/matrix-bridges/matrix-puppet-slack/client.js:/opt/matrix-puppet-slack/client.js
             - ./matrix-puppet-slack/config.json:/opt/matrix-puppet-slack/config.json
             - ./registrations/slack-registration.yaml:/opt/matrix-puppet-slack/slack-registration.yaml
     mautrix-telegram:
