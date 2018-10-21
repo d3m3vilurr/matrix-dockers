@@ -1,6 +1,13 @@
 version: '3'
 
 services:
+    riot:
+        image: bubuntux/riot-web:v0.16.6
+        restart: unless-stopped
+        volumes:
+            - ./riot/config.json:/etc/riot-web/config.json:ro
+        ports:
+            - 8009:80/tcp
     synapse:
         image: matrixdotorg/synapse
         restart: unless-stopped
