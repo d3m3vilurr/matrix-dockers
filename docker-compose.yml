@@ -27,6 +27,7 @@ services:
             - ./registrations/hangouts-registration.yaml:/data/appservices/hangouts-registration.yaml
             - ./registrations/slack-registration.yaml:/data/appservices/slack-registration.yaml
             - ./registrations/telegram-registration.yaml:/data/appservices/telegram-registration.yaml
+            - ./registrations/webhooks-registration.yaml:/data/appservices/webhooks-registration.yaml
         ports:
             - 8008:8008/tcp
     matrix-puppet-facebook:
@@ -62,3 +63,11 @@ services:
         volumes:
             - ./mautrix-telegram:/data
             - ./registrations/telegram-registration.yaml:/data/registration.yaml
+    matrix-appservice-webhooks:
+        image: turt2live/matrix-appservice-webhooks
+        restart: unless-stopped
+        volumes:
+            - ./matrix-appservice-webhooks:/data
+            - ./registrations/webhooks-registration.yaml:/data/appservice-registration-webhooks.yaml
+        ports:
+            - 8010:9000/tcp

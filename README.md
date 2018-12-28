@@ -40,3 +40,15 @@ $ touch registrations/telegram-registration.yaml
 $ docker-compose run --rm mautrix-telegram python3 -m mautrix_telegram -g -c /data/config.yaml -r /data/registration.yaml
 $ docker-compose up -d mautrix_telegram
 ```
+
+## webhooks
+```
+$ matrix-appservice-webhooks
+$ bash build.sh
+$ cp config.sample.yaml config.yaml
+$ vi config.yaml
+$ cd ..
+$ touch registrations/webhooks-registration.yaml
+$ docker-compose run --rm -v $(pwd)/registrations/webhooks-registration.yaml:/appservice-registration-webhooks.yaml --entrypoint 'node index.js -r -u "http://matrix-appservice-webhooks:9000" -c data/config.yaml' matrix-appservice-webhooks
+$ docker-compose up -d matrix-appservice-webhooks
+```

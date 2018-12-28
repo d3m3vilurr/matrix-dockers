@@ -1,5 +1,6 @@
 synapse.env
 synapse/data
+matrix-appservice-webhooks/*
 matrix-puppet-facebook/*.json
 matrix-puppet-hangouts/*.json
 matrix-puppet-hangouts/hangups/*
