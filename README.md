@@ -1,3 +1,14 @@
+## common parts
+after setup, we get the `registration.yaml` file for specific bridge.
+if that file have empty `aliases` part, must fix manually.
+
+for example, slack bridge's aliases is:
+```
+  aliases:
+    - exclusive: true
+      regex: '#slack_.*'
+```
+
 ## facebook
 TBD
 
