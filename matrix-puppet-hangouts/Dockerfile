@@ -1,5 +1,5 @@
 FROM node:alpine
-RUN apk add --no-cache curl python3 python3-dev \
+RUN apk add --no-cache curl python3 python3-dev git \
     && python3 -m ensurepip \
     && rm -r /usr/lib/python*/ensurepip \
     && pip3 install --upgrade pip setuptools \
