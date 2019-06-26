@@ -15,6 +15,9 @@ pid_file: /homeserver.pid
 web_client: False
 soft_file_limit: 0
 
+federation_domain_whitelist:
+  - "{{ SYNAPSE_SERVER_NAME }}"
+
 ## Ports ##
 
 listeners:
